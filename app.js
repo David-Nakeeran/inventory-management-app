@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,6 +9,25 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = process.env.MONGODB_URI;
+
+async function main() {
+    await mongoose.connect(mongoDB);
+};
+
+async function connectToMongoDB() {
+  try {
+    await main();
+  } catch(error) {
+    console.error("Error connecting to MongoDB:", error)
+  }
+};
+connectToMongoDB()
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
