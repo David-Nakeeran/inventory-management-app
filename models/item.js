@@ -10,7 +10,7 @@ const ItemSchema = new Schema({
     },
     description: {
         type: String,
-        maxLength: 300,
+        maxLength: 500,
         required: true,
     },
     category: {
