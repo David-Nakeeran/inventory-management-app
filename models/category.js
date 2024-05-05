@@ -8,10 +8,6 @@ const CategorySchema = new Schema({
         required: true,
         unique: true,
     },
-    items: [{
-        type: Schema.Types.ObjectId,
-        ref: "Item",
-    }],
     
 });
 
