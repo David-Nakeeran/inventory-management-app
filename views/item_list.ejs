@@ -1,0 +1,14 @@
+<h1><%= title %></h1>
+
+<% if (item_list.length) { %>
+  <ul>
+    <% item_list.forEach(function(item) { %>
+      <li>
+        <a href="<%= item.url %>"><%= item.productName %></a>
+        (<%= item.category.name %>)
+      </li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <p>There are no items.</p>
+<% } %>
