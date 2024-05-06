@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+  <h1><%= title %></h1>
+  <p>Welcome to <em>Inventory Managment</em>, a very basic Express website</p>
+
+  <h2>Dynamic content</h2>
+
+  <p>The Inventory has the following record counts:</p>
+
+  <ul>
+    <li><strong>Items:</strong> <%= item_count %></li>
+    <li><strong>Categories:</strong> <%= category_count %></li>
+  </ul>
+
+
