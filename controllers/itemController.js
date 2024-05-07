@@ -28,16 +28,31 @@ exports.item_list = asyncHandler(async(req, res, next) => {
         .exec();
     console.log(allItems);
     res.render("layout", 
-    {title: "Item List",
-    viewToInclude: "item_list",
-    item_list: allItems
+    {
+        title: "Item List",
+        viewToInclude: "item_list",
+        item_list: allItems
     })
 });
 
 // Display detail page for a specific item
-// exports.item_detail = asyncHandler(async(req, res, next) => {
-//     res.send(`Not implemented: item detail: ${req.params.id}`);
-// });
+exports.item_detail = asyncHandler(async(req, res, next) => {
+    const item = await Item.findById(req.params.id).populate("category").exec()
+
+    if(item === null) {
+        const err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
+    }
+
+    res.render("layout", 
+        {
+            title: item.productName,
+            item: item,
+            viewToInclude: "item_detail"
+        }
+    )
+});
 
 // Display item create form on GET
 // exports.item_create_get = asyncHandler(async(req, res, next) => {
