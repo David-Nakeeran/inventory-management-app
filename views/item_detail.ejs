@@ -1,0 +1,18 @@
+<h1>Item name: <%= item.productName %></h1>
+
+  <div style='margin-left:20px;margin-top:20px'>
+
+
+    <% if (item) { %>
+      
+          <a href="<%= item.url %>"><%= item.productName %></a>
+          <p><%= item.description %></p>
+          <p>Price: £<%= item.price %></p>
+          <p>Company: <%= item.category.name %></p>
+          <p>In stock: <%= item.quantity %></p>
+      </dl>
+    <% } else { %>
+      <p>Does not exist in this inventory</p>
+    <% } %>
+  </div>
+

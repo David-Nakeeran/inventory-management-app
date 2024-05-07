@@ -1,0 +1,15 @@
+<h1>Category: <%= category.name %></h1>
+
+  <div style='margin-left:20px;margin-top:20px'>
+    <h2 style='font-size: 1.5rem;'>Items</h2>
+    <% if (category_items.length) { %>
+      
+        <% category_items.forEach(function(item) { %>
+          <a href="<%= item.url %>"><%= item.productName %></a>
+          <p><%= item.description %></p>
+        <% }); %>
+      </dl>
+    <% } else { %>
+      <p>This category has no items.</p>
+    <% } %>
+  </div>
