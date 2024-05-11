@@ -2,6 +2,7 @@ const Category = require("../models/category");
 const Item = require("../models/item");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const debug = require("debug")("category");
 
 // Display list of all Categories
 exports.category_list = asyncHandler(async(req, res, next) => {
@@ -155,6 +156,7 @@ exports.category_update_get = asyncHandler(async (req, res, next) => {
 
   if (category === null) {
     // No results.
+    debug(`id not found on update: ${req.params.id}`)
     const err = new Error("Item not found");
     err.status = 404;
     return next(err);
