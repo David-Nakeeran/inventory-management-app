@@ -1,0 +1,19 @@
+<h1><%= title %>: <%= category.name %></h1>
+
+<% if (category_items.length) { %>
+  <p>Delete the following items before attempting to delete this author.</p>
+  <ul>
+    <% category_items.forEach(function(item) { %>
+      <li>
+        <a href="<%= item.url %>"><%= item.productName %></a>
+        (<%= item.description %>)
+      </li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <p>Do you really want to delete this Category?</p>
+  <form method="POST">
+    <input type="hidden" name="categoryid" value=<%= category._id %>>
+    <button type="submit">Delete</button>
+  </form>
+<% } %>

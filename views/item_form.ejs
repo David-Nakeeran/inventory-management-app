@@ -1,0 +1,67 @@
+<h1><%= title %></h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="productName">Product Name:</label>
+        <input 
+        type="text" 
+        name="productName" 
+        placeholder="Name of item"
+        value="<%= item ? item.productName : '' %>"
+        required
+        />
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input 
+        type="text" 
+        name="description" 
+        placeholder="Description of item"
+        value="<%= item ? item.description : '' %>"
+        required
+        />
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input 
+        type="number" 
+        name="price" 
+        placeholder="Enter price"
+        value="<%= item ? item.price : '' %>"
+        step="0.01"
+        min="0"
+        required
+        />
+    </div>
+    <div class="form-group">
+        <% categories.forEach(function(category) { %>
+            <div style="display: inline; padding-right: 10px;">
+              <input type="radio" id="<%= category._id %>" name="category" value="<%= category._id %>" required
+              <% if (item && item.category && item.category._id.toString() === category._id.toString()) { %>
+                 checked <% } %>>
+              <label for="<%= category._id %>"><%= category.name %></label>
+            </div>
+          <% }); %>
+    </div>
+    <div class="form-group">
+        <label for="quantity">quantity:</label>
+        <input 
+        type="number" 
+        name="quantity" 
+        placeholder="Quantity of item"
+        value="<%= item ? item.quantity : '' %>"
+        min="0"
+        required
+        />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <% if (errors) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li>
+          <%= error.msg %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
